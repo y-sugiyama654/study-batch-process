@@ -11,7 +11,7 @@ class HelloCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'hello:class';
+    protected $signature = 'hello:class {--switch}';
 
     /**
      * The console command description.
@@ -31,12 +31,11 @@ class HelloCommand extends Command
     }
 
     /**
-     * Execute the console command.
-     *
-     * @return mixed
+     * optionがついている場合はtrueを返して、付いていない場合はfalseを返す
      */
     public function handle()
     {
-        $this->comment('Hello class command!');
+        $switch = $this->option('switch');
+        $this->comment('Hello ' . ($switch ? 'ON' : 'OFF'));
     }
 }
